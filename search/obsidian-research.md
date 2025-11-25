@@ -87,3 +87,42 @@ Weave these into recommendations naturally (not as a checklist every time):
 - Mention first-party solutions before recommending community plugins
 - Call out mobile/performance considerations when they're decision factors
 - Link generously to ObsidianStats pages
+
+## Checking User's Installed Plugins
+
+### Plugin Storage Location
+Plugins are stored **inside each vault** (not in a central location):
+```
+[VaultName]/.obsidian/plugins/
+```
+
+Each vault has its own `.obsidian` folder containing:
+- `plugins/` - Installed plugin folders
+- `community-plugins.json` - List of enabled plugins
+- `app.json` - Vault settings
+
+### Finding Plugin Locations
+
+**Option 1: Via Obsidian UI (Easiest)**
+1. Settings → Community Plugins → Installed Plugins
+2. Click the folder icon next to any plugin
+3. Finder opens directly to `.obsidian/plugins/`
+
+**Option 2: Check Enabled Plugins List**
+```bash
+cat [VaultPath]/.obsidian/community-plugins.json
+```
+Returns array of enabled plugin IDs.
+
+**Option 3: Show Hidden Files**
+1. In Finder, press `Cmd + Shift + .` to show hidden files
+2. Navigate to vault folder
+3. Look for `.obsidian/plugins/` subfolder
+
+### Important Notes
+- Each vault has separate plugin configurations
+- The `.obsidian` folder name can technically be changed (rare)
+- Plugins are **per-vault**, not system-wide
+- User can have different plugins enabled in different vaults
+
+When helping with plugin-related questions, ask which vault they're working in if unclear.
