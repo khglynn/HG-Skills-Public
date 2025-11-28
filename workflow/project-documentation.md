@@ -13,7 +13,11 @@ description: Rules for splitting documentation between Obsidian (for Kevin) and 
 
 ## Where Things Go
 
-### Obsidian → `/Users/KevinHG/Documents/HG Main/AI Chats/vibe coded/YYYY/QN/{project-name}.md`
+### Obsidian → `/Users/KevinHG/Documents/HG Main/0.2 Clips + Social + AI/AI Chats/YYYY/MM mmm/MUX - {short description}.md`
+
+Examples:
+- `2025/11 Nov/MUX - Skills repo setup.md`
+- `2025/12 Dec/MUX - Election helper app.md`
 
 One file per project. Structure top-to-bottom from practical to historical:
 
