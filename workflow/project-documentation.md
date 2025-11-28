@@ -13,11 +13,13 @@ description: Rules for splitting documentation between Obsidian (for Kevin) and 
 
 ## Where Things Go
 
-### Obsidian → `/Users/KevinHG/Documents/HG Main/0.2 Clips + Social + AI/AI Chats/YYYY/MM mmm/MUX - {short description}.md`
+### Obsidian → `~/MuxDocs/YYYY/QN/MUX - {short description}.md`
+
+The `~/MuxDocs` symlink points to the actual Obsidian folder. If the folder moves, update the symlink—not this skill.
 
 Examples:
-- `2025/11 Nov/MUX - Skills repo setup.md`
-- `2025/12 Dec/MUX - Election helper app.md`
+- `~/MuxDocs/2025/Q4/MUX - Skills repo setup.md`
+- `~/MuxDocs/2026/Q1/MUX - New project.md`
 
 One file per project. Structure top-to-bottom from practical to historical:
 
@@ -139,7 +141,7 @@ Read this file for full context including decision history, implementation detai
 
 Example:
 ```
-📋 Documentation saved: /Users/KevinHG/Documents/HG Main/0.2 Clips + Social + AI/AI Chats/2025/11 Nov/MUX - Skills repo setup.md
+📋 Documentation saved: ~/MuxDocs/2025/Q4/MUX - Skills repo setup.md
 
 Read this file for full context including decision history, implementation details, and how-to guides.
 ```
