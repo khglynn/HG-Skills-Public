@@ -117,9 +117,31 @@ End of session:
 2. AI: Create/update Obsidian file with session summary
 3. AI: Consolidate GitHub to README.md + CONTEXT.md (if needed)
 4. AI: Delete redundant doc files in repo
-5. Kevin: /compact (cmux handles AI-friendly summary)
+5. AI: Post breadcrumb message (see below)
+6. Kevin: /compact (cmux handles AI-friendly summary)
 
-Resuming:
-1. AI: Read Obsidian file + GitHub README for context
-2. AI: Update Obsidian with new session when done
+Resuming after compaction:
+1. AI: Check for MUX doc path in compaction summary
+2. AI: If not found, search AI Chats folder for related "MUX - *.md" file
+3. AI: Read the MUX doc for full context (richer than compaction summary)
+4. AI: Update Obsidian with new session when done
 ```
+
+## Breadcrumb for Compaction
+
+After saving documentation, **always** end with this message so compaction captures the reference:
+
+```
+📋 Documentation saved: [full path to MUX file]
+
+Read this file for full context including decision history, implementation details, and how-to guides.
+```
+
+Example:
+```
+📋 Documentation saved: /Users/KevinHG/Documents/HG Main/0.2 Clips + Social + AI/AI Chats/2025/11 Nov/MUX - Skills repo setup.md
+
+Read this file for full context including decision history, implementation details, and how-to guides.
+```
+
+This breadcrumb gets included in the compaction summary, helping future sessions find the richer docs.
