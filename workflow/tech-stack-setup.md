@@ -7,6 +7,8 @@ description: Common patterns for setting up monitoring, auth, and infrastructure
 
 Reference for consistent setup of monitoring, auth, and infrastructure across projects.
 
+**Note:** Tool capabilities change rapidly. When comparing tools, asked about features, or setting up integrations - check official docs rather than assuming internal knowledge is current.
+
 ## Monitoring & Error Tracking
 
 ### PostHog (Analytics + Session Replay)
@@ -78,6 +80,7 @@ function PostHogUserIdentifier() {
 ```
 
 **Dashboard:** https://us.posthog.com
+**Docs:** https://posthog.com/docs
 
 ---
 
@@ -146,6 +149,7 @@ module.exports = withSentryConfig(nextConfig, {
 ```
 
 **Dashboard:** https://sentry.io (org: khg-y1)
+**Docs:** https://docs.sentry.io/platforms/javascript/guides/nextjs/
 
 ---
 
@@ -241,7 +245,55 @@ When tracking with PostHog, use consistent event names:
 - [ ] Set env vars locally (`.env.local`)
 - [ ] Set env vars in Vercel dashboard (with descriptions)
 - [ ] Create Sentry project (one per app)
-- [ ] Verify Slack alerts connected in Sentry
+- [ ] Set up Slack notification channels (see below)
+
+## Slack Notification Channels
+
+Create per-project channels to centralize alerts (no need for individual tool apps):
+
+| Channel | Sources | Setup |
+|---------|---------|-------|
+| `#[project]-errors` | Sentry, Vercel | Sentry: Settings → Alerts → Slack action. Invite `@Sentry` to channel. |
+| `#[project]-feedback` | Canny | Canny: Settings → Integrations → Slack → Channel Notifications |
+
+---
+
+## UI Component Visibility
+
+### Centralized Messages
+
+Keep all user-facing messages (errors, alerts, warnings) in one file:
+
+```typescript
+// src/config/messages.ts
+export const MESSAGES = {
+  freeTierExhausted: {
+    id: 'free_exhausted',
+    title: 'Free limit reached',
+    body: 'Sign in to continue.',
+    type: 'modal',
+  },
+  // ... all error/alert messages
+}
+```
+
+Benefits: Single source of truth, easy to review/edit, prevents inconsistent copy.
+
+### Storybook (Component Library)
+
+For projects with custom design systems, add Storybook to visualize all components.
+
+**What it provides:**
+- See every component in isolation
+- Test different props/states
+- Design system documentation
+- Error state previews
+
+**Setup:** `npx storybook@latest init`
+
+**Free:** Open source, no cost.
+
+**When to add:** Any project with 10+ custom components or a design system.
 
 ---
 

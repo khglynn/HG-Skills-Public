@@ -8,8 +8,11 @@ description: Rules for splitting documentation between Obsidian (for Kevin) and 
 ## When to Document
 
 - **"Let's document this"** or **"wrap up"** - end of session or major milestone
+- **After key decisions** - when comparing approaches, choosing a path, or answering a "why"
 - **Resuming after a break** - update Obsidian with what happened, check GitHub docs are current
 - **Before /compact** - ideal timing; full chat history still available for richer summaries
+
+**Decision triggers:** Research → Compare options → Choose path → Document the "why"
 
 ## Where Things Go
 
