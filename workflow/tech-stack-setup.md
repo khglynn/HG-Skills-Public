@@ -295,6 +295,65 @@ For projects with custom design systems, add Storybook to visualize all componen
 
 **When to add:** Any project with 10+ custom components or a design system.
 
+#### Hosting Storybook on Vercel (Subdirectory)
+
+To serve Storybook at `/storybook/` alongside your Next.js app:
+
+**1. Configure Vite base path** (`.storybook/main.ts`):
+```typescript
+const config: StorybookConfig = {
+  // ... other config
+  viteFinal: async (config) => {
+    config.base = '/storybook/';
+    return config;
+  },
+};
+```
+
+**2. Inject `<base>` tag for HTML files** (`package.json` build script):
+```json
+"build": "rm -rf public/storybook && storybook build && for f in storybook-static/index.html storybook-static/iframe.html; do sed 's#<head>#<head><base href=\"/storybook/\">#' \"$f\" > \"$f.tmp\" && mv \"$f.tmp\" \"$f\"; done && mv storybook-static public/storybook && next build"
+```
+
+Note: Uses portable sed syntax (temp files) for macOS/Linux compatibility. Avoid `sed -i` which differs between platforms.
+
+**3. Add Vercel rewrite** (`vercel.json`):
+```json
+{
+  "rewrites": [
+    { "source": "/storybook", "destination": "/storybook/index.html" }
+  ]
+}
+```
+
+**Why both fixes?** Vite's `base` handles JS/CSS imports, but some paths are baked into HTML at build time. The `<base>` tag catches those.
+
+#### Storybook Gotchas
+
+| Issue | Cause | Fix |
+|-------|-------|-----|
+| 404 on `/storybook/` assets | Base path not set | Add `viteFinal` with `config.base` |
+| Still 404 after viteFinal | HTML has hardcoded paths | Inject `<base>` tag via sed |
+| Build fails with `document` error | `manager.ts` using browser APIs | Don't use `document.title` in manager.ts - use `brandTitle` in theme instead |
+| "use client" warnings | Next.js directives in Storybook | Safe to ignore - Storybook strips these |
+
+#### Manager Customization (`.storybook/manager.ts`)
+
+Customize Storybook UI without breaking the build:
+```typescript
+import { addons } from 'storybook/manager-api';
+
+addons.setConfig({
+  navSize: 250,
+  panelPosition: 'bottom',
+  sidebar: { showRoots: true },
+  // For custom title, use theme.brandTitle instead of document.title
+});
+```
+
+**Wrong:** `document.title = 'My Storybook'` (fails during static build)
+**Right:** Create a theme with `brandTitle` property
+
 ---
 
 ## Documenting New Tools

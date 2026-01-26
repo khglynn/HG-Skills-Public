@@ -1,6 +1,6 @@
 # Playwright MCP Server
 
-**Updated:** 2025-12-12
+**Updated:** 2025-12-13
 
 ## When to Use Playwright
 
@@ -45,6 +45,7 @@ Each project gets its own Playwright MCP with isolated browser profile. This pre
 |----------|---------|---------|
 | `playwright-eachie` | `~/.playwright-eachie/` | Eachie project |
 | `playwright-recordos` | `~/.playwright-recordos/` | recordOS project |
+| `playwright-list-maker` | `~/.playwright-list-maker/` | list-maker project |
 | `playwright-generic` | `~/.playwright-generic/` | Everything else |
 
 **Which to use:** Check the project's CLAUDE.md for which instance to use. If not specified, use `playwright-generic`.
@@ -80,6 +81,44 @@ This keeps browser sessions/logins isolated from other projects. Profile stored 
 5. **Restart Claude Code** to load the new MCP
 
 **Trade-off:** Each profile needs its own login sessions. Logins in `playwright-eachie` don't exist in `playwright-recordos`.
+
+## Permissions
+
+Kevin's permission strategy (balances convenience + security):
+
+**Auto-allowed (no prompts):**
+- Read-only: snapshot, take_screenshot, console_messages, network_requests
+- Navigation: navigate, navigate_back, close, resize, tabs, wait_for
+- Clicks: click, hover, drag, handle_dialog
+
+**Prompts required:**
+- Typing: type, fill_form, select_option, file_upload
+- Keys: press_key
+- Setup: install
+- Code: evaluate, run_code
+
+### Adding Permissions for New Projects
+
+When creating `playwright-{newproject}`, add 14 entries to `~/.claude/settings.json` in the `permissions.allow` array:
+
+```json
+"mcp__playwright-{newproject}__browser_snapshot",
+"mcp__playwright-{newproject}__browser_take_screenshot",
+"mcp__playwright-{newproject}__browser_console_messages",
+"mcp__playwright-{newproject}__browser_network_requests",
+"mcp__playwright-{newproject}__browser_navigate",
+"mcp__playwright-{newproject}__browser_navigate_back",
+"mcp__playwright-{newproject}__browser_close",
+"mcp__playwright-{newproject}__browser_resize",
+"mcp__playwright-{newproject}__browser_tabs",
+"mcp__playwright-{newproject}__browser_wait_for",
+"mcp__playwright-{newproject}__browser_click",
+"mcp__playwright-{newproject}__browser_hover",
+"mcp__playwright-{newproject}__browser_drag",
+"mcp__playwright-{newproject}__browser_handle_dialog"
+```
+
+**Why no wildcards?** MCP permissions don't support patterns like `mcp__playwright-*`. Each instance needs explicit entries. This is a side effect of the multi-instance setup (which exists to prevent browser conflicts). Added benefit: permission separation per project.
 
 ### Throwaway Sessions
 

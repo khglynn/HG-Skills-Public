@@ -62,7 +62,7 @@ Why we built it this way. Key tradeoffs.
 **Files changed:** `auth.ts`, `middleware.ts`, `stripe-webhook.ts`
 ```
 
-### GitHub → `README.md` + optional `CONTEXT.md`
+### GitHub → `README.md` + optional docs
 
 **README.md** (required):
 - What this is (1 paragraph)
@@ -71,10 +71,33 @@ Why we built it this way. Key tradeoffs.
 - Env vars / API keys needed
 - Live URL
 
+**ROADMAP.md** (for multi-phase projects):
+- What's next, in order
+- Each item: number, name, bullet list of key actions
+- Link to detailed plan in `claude-plans/`
+- When done, move to COMPLETED.md
+
+**COMPLETED.md** (companion to ROADMAP):
+- Newest at top
+- Date completed, what was done
+- Key files created/modified
+- Link to relevant plan
+
 **CONTEXT.md** (only if complex):
 - Architecture decisions that affect how to write code
 - Constraints future AI needs to know
 - NOT: tutorials, workflow guides, Q&A docs
+
+**Example ROADMAP format:**
+```markdown
+## 1. Feature Name
+
+- Key action 1
+- Key action 2
+- Key action 3
+
+**Reference:** `claude-plans/YYYY-MM-DD-feature-name.md`
+```
 
 **Delete these patterns:**
 - AI-TOOLS-GUIDE.md
