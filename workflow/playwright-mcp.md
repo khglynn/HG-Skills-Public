@@ -191,6 +191,22 @@ When working with Next.js/React dev servers:
 - After server restart
 - Testing fresh page load behavior
 
+## Screenshot File Paths
+
+`browser_take_screenshot` saves to the current working directory by default. **Always specify the `screenshots/` subdirectory** to keep the project root clean:
+
+```
+filename: "screenshots/descriptive-name.png"
+```
+
+**Not:**
+```
+filename: "descriptive-name.png"        ← dumps in project root
+filename: "page-1739000000000.png"      ← default timestamped name, also in root
+```
+
+Each project should have a `screenshots/` directory (gitignored). If it doesn't exist yet, create it.
+
 ## Common Commands
 
 ```
