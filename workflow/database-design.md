@@ -293,3 +293,56 @@ See Eachie's Stripe setup for a complete example:
 - `src/lib/stripe.ts` - SetupIntent + PaymentIntent functions
 - `app/api/webhooks/stripe/route.ts` - Webhook handler
 - `src/server/queries/users.ts` - Credit management functions
+
+---
+
+## Data Validation Patterns
+
+*Added: March 2026 — from Eachie score pipeline post-mortem*
+
+### Data Contracts
+Define expected value ranges BEFORE building scrapers or importers:
+```typescript
+const EXPECTED_RANGES = {
+  'intelligence_index': { min: 20, max: 100 },
+  'elo_score': { min: 800, max: 1800 },
+  'accuracy_pct': { min: 0, max: 100 },
+}
+```
+
+### Write-Time Validation
+Check values before INSERT. Reject or warn on implausible data:
+```typescript
+if (value < range.min || value > range.max) {
+  console.warn(`Rejected ${metric}=${value} (expected ${range.min}-${range.max})`)
+  return // Don't insert garbage
+}
+```
+
+### Silent Defaults Anti-Pattern
+`COALESCE(score, 50)` and `DEFAULT 75` produce plausible-looking numbers when data is missing. This hides the problem. Prefer NULL and handle it in display code:
+```sql
+-- Bad: hides missing data
+COALESCE(quality_score, 50) as quality_score
+
+-- Better: makes missing data visible
+quality_score  -- NULL = no data, UI shows "—"
+```
+
+### COALESCE Scale Mismatch
+Every value in a COALESCE chain must be on the same scale:
+```sql
+-- Dangerous: mixes scales
+COALESCE(normalized_composite, raw_index_0_to_71, elo_1000_to_1500, 75)
+
+-- Safe: all values are 0-100
+COALESCE(normalized_composite, normalized_arena, family_avg, 50)
+```
+
+### Pipeline Smoke Tests
+After each pipeline run, check well-known entities against expected ranges. Alert on failures instead of silently writing bad data.
+
+### Scraper Output Validation
+After first scrape of a new source, always compare stored values against the source website. API schemas change without notice.
+
+**Full guide:** `helper/guides/data-pipeline-best-practices.md`
