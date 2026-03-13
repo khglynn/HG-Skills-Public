@@ -71,33 +71,26 @@ Why we built it this way. Key tradeoffs.
 - Env vars / API keys needed
 - Live URL
 
-**ROADMAP.md** (for multi-phase projects):
-- What's next, in order
-- Each item: number, name, bullet list of key actions
-- Link to detailed plan in `claude-plans/`
-- When done, move to COMPLETED.md
+**Project tracking** (check the project's CLAUDE.md for which pattern it uses):
 
-**COMPLETED.md** (companion to ROADMAP):
-- Newest at top
-- Date completed, what was done
-- Key files created/modified
-- Link to relevant plan
+*Complex projects (preferred for new projects):*
+- `NOW.md` — Ephemeral current focus, under 20 lines, rewrite freely each session
+- `DEVLOG.md` — Chronological session journal, most recent at top, never delete entries
+- `adr/` — Architecture Decision Records for significant technical decisions
+
+*Legacy pattern (some projects still use this):*
+- `ROADMAP.md` — What's next, in order. Link to plans in `claude-plans/`
+- `COMPLETED.md` — What's done, newest at top
+
+*Shipped products:*
+- `CHANGELOG.md` — Keep-a-Changelog format, "Unreleased" = roadmap
+
+**Full guide with templates:** `~/DevKev/helper/guides/project-tracking.md`
 
 **CONTEXT.md** (only if complex):
 - Architecture decisions that affect how to write code
 - Constraints future AI needs to know
 - NOT: tutorials, workflow guides, Q&A docs
-
-**Example ROADMAP format:**
-```markdown
-## 1. Feature Name
-
-- Key action 1
-- Key action 2
-- Key action 3
-
-**Reference:** `claude-plans/YYYY-MM-DD-feature-name.md`
-```
 
 **Delete these patterns:**
 - AI-TOOLS-GUIDE.md
