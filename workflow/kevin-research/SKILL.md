@@ -22,6 +22,7 @@ Consolidated research patterns for different domains. Claude reads the relevant 
 | **Software evaluation, tool comparison** | `references/software-eval.md` | Always search live — software changes fast. Prioritize current docs, reviews, forums |
 | **Which tool or service to use** | `references/capability-scan.md` | Check existing MCPs first, then evaluate MCP vs API vs Playwright vs manual |
 | **Shopping, product research** | `references/shopping.md` | Verified purchase links, prioritize Amazon (6-month financing), local Austin stores |
+| **Search Apple Notes** | `references/apple-notes.md` | Scratch notes, ideas, captures. Use Apple Notes MCP for live search. |
 
 ## Universal Research Principles
 
