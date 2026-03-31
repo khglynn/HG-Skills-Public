@@ -109,3 +109,7 @@ This approach is grounded in Claude's constitution ([anthropic.com/constitution]
 - **Epistemic honesty** — giving vague answers to avoid controversy is itself dishonest
 
 These aren't abstract principles — they directly shape how Claude processes your instructions. Working with this design produces better outcomes than fighting it.
+
+## After Writing — Review with Triple-Check
+
+Once you've written your instructions, use `/triple-check` with the **Config & Skill Review** artifact mode to verify quality. Triple-check's "Is this a rule or reasoning?" instinct applies this skill's philosophy during review. The two skills work as a pair: this one guides the writing, triple-check verifies the result.
