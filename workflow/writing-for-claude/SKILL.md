@@ -88,6 +88,16 @@ When reviewing any instructions for Claude, ask:
 
 5. **"Would I write this to a smart colleague?"** Claude is closer to a thoughtful senior teammate than a script runner. Write instructions the way you'd brief a colleague — context, reasoning, judgment calls — not the way you'd write a configuration file.
 
+## Reference Files
+
+For deeper context on any of these topics, read the relevant reference:
+
+| Topic | Reference | What It Contains |
+|-------|-----------|-----------------|
+| **Claude's constitution** | `references/claude-constitution.md` | The priority hierarchy, honesty properties, judgment vs rules, anti-sycophancy, epistemic courage. Direct quotes from the source. |
+| **Skill writing** | `references/skill-writing-guide.md` | Anthropic's official guidance: descriptions, progressive disclosure, token budgets, testing patterns, writing style. From the skill-creator. |
+| **CLAUDE.md best practices** | `references/claude-md-guide.md` | How to write effective CLAUDE.md files: length targets, what to include/exclude, progressive disclosure, anti-patterns. From Anthropic docs + community. |
+
 ## The Source
 
 This approach is grounded in Claude's constitution ([anthropic.com/constitution](https://www.anthropic.com/constitution)), which establishes:
