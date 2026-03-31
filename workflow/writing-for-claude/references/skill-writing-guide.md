@@ -17,7 +17,7 @@ All "when to use" info goes in the description, not in the body.
 ## Progressive Disclosure — The Token Budget
 
 Skills load in stages:
-1. **Metadata** (name + description) — always in context (~100 words per skill)
+1. **Metadata** (name + description) — always in context (~100 tokens per skill)
 2. **SKILL.md body** — loaded when the skill triggers (<500 lines ideal)
 3. **Reference files** — loaded on-demand (unlimited size)
 
