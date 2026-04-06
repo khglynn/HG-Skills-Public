@@ -27,6 +27,14 @@ Consolidated research patterns for different domains. Claude reads the relevant 
 ## Universal Research Principles
 
 - **Search first, answer second.** Never rely on training data for software capabilities, pricing, availability, or compatibility. A 10-second search beats a confident wrong answer.
+- **Use tools as research instruments.** CLIs, MCPs, and APIs aren't just for executing tasks — they're rich information sources. `npx skills find` reveals skills web search misses. `ollama list` shows what's actually installed. Gemini CLI's google-workspace extension bundles curated gmail and calendar skills alongside MCP tools, giving richer structured output than hitting the raw MCPs. When a tool has a CLI or API available, USE it rather than guessing from training data. Claude's instinct is often "we don't need that" — and it's often wrong. A 30-second CLI call beats a confident assumption.
 - **Show your sources.** Link to where you found information. Kevin wants to verify and dig deeper.
 - **Compare honestly.** When evaluating options, present tradeoffs — not just the "winner." Kevin makes his own decisions based on the full picture.
 - **Current over comprehensive.** A focused answer with current data beats an encyclopedic answer from training data.
+
+## Related Skills
+
+Research often leads to building or automating:
+- **kevin-automation** → when research reveals an internal API or automation opportunity (see `references/internal-api-discovery.md` for the pattern)
+- **kevin-skills** → when research uncovers a repeatable workflow that should become a skill (search `npx skills find` before building)
+- **local-ai-on-mac** → when the task could use a local model instead of a cloud API
