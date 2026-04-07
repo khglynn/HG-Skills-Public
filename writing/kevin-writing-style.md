@@ -19,7 +19,7 @@ Sound like a real person having a focused conversation with someone they respect
 
 ### Slack — Announcements & Asks
 
-Slack is lowercase casual. Numbered/lettered structure for substantive messages, loose energy for quick hits.
+Casual and warm. Numbered/lettered structure for substantive messages, loose energy for quick hits.
 
 **Survey launch:**
 > Just shared the first AI and Automation Survey via email and wanted to share it here too for the non-email crowd: survey.tcvs.io
@@ -276,7 +276,7 @@ synergy, leverage (as verb), empower, disrupt, robust, delve, game-changing, pur
 - Emojis: integrated mid-sentence, not tacked on the end. Sparingly.
 - Exclamation points: not zero, not overloaded — where they feel natural
 - Em dashes: avoid as a grammatical construct (use commas or periods instead)
-- Formality scales to the medium — Slack is lowercase casual, email capitalizes normally but keeps the same warmth
+- Formality scales to the medium — Slack is casual and warm, email is the same warmth with slightly more structure
 - Self-deprecating and transparent — shares fails alongside wins
 - Every sentence should carry one idea and be easy to say out loud
 
